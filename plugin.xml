@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin 
+	xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="com-samulle-plugin-updateApp" 
+	version="1.0.0" >
+	<name>UpdateApp</name>
+	<js-module name="UpdateApp" src="www/UpdateApp.js">
+		<clobbers target="UpdateApp" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="UpdateApp">
+				<param name="android-package" value="com.samulle.plugin.update.updateApp.UpdateApp" />
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
+			<uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="application">
+          <service android:name="com.samulle.plugin.update.service.DownloadService" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="application">
+          <provider
+              android:name="android.support.v4.content.FileProvider"
+              android:authorities="${applicationId}.provider"
+              android:exported="false"
+              android:grantUriPermissions="true" >
+              <meta-data
+                  android:name="android.support.FILE_PROVIDER_PATHS"
+                  android:resource="@xml/provider_paths"/>
+          </provider>
+        </config-file>
+		<source-file src="src/android/updateApp/UpdateApp.java" target-dir="src/com/samulle/plugin/update/updateApp" />
+		<source-file src="src/android/updateApp/PermissionHelper.java" target-dir="src/com/samulle/plugin/update/updateApp" />
+		<source-file src="src/android/service/DownloadService.java" target-dir="src/com/samulle/plugin/update/service" />
+		<source-file src="src/android/util/FileUtil.java" target-dir="src/com/samulle/plugin/update/util" />
+		<source-file src="src/android/util/HttpDownloadUtil.java" target-dir="src/com/samulle/plugin/update/util" />
+		<source-file src="src/android/util/SPUtils.java" target-dir="src/com/samulle/plugin/update/util" />
+		<source-file src="src/android/util/VersionUtils.java" target-dir="src/com/samulle/plugin/update/util" />
+		<source-file src="src/android/util/ResourceHelper.java" target-dir="src/com/samulle/plugin/update/util" />
+		<source-file src="src/android/version/Version.java" target-dir="src/com/samulle/plugin/update/version" />
+		<source-file src="src/android/xml/VersionContentHandler.java" target-dir="src/com/samulle/plugin/update/xml" />
+		<source-file src="src/android/xml/provider_paths.xml" target-dir="res/xml" />
+		<source-file src="src/android/layout/download_layout.xml" target-dir="res/layout" />
+		<source-file src="src/android/drawable/bg_button.xml" target-dir="res/drawable" />
+		<source-file src="src/android/drawable/bg_dialog.xml" target-dir="res/drawable" />
+
+		<framework src="com.android.support:support-v4:24.1.1+" />
+	</platform>
+</plugin>
