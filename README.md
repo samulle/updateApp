@@ -8,3 +8,4 @@ phonegap plugin add https://github.com/samulle/updateApp.git
 phonegap plugin remove com-samulle-plugin-updateApp
 
 其中服务器需要配置一个xml，其格式为：
+![image]
