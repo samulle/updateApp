@@ -1,0 +1,25 @@
+{
+  "name": "updateApp",
+  "version": "1.0.0",
+  "description": "安装的步骤：",
+  "cordova": {
+    "id": "com-samulle-plugin-updateApp",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samulle/updateApp.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samulle/updateApp/issues"
+  },
+  "homepage": "https://github.com/samulle/updateApp#readme"
+}
